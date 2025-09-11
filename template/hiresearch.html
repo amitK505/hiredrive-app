@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search for hire person</title>
+</head>
+<body>
+    <style>
+        body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      background-image: url('/static/hiredetail.jpg');
+      background-position: 0%;
+      background-size: auto;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 15px 25px;
+      background: #004080;
+      color: white;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    }
+    .header img {
+      height: 50px;
+      margin-right: 15px;
+    }
+    .header h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    /* Marquee */
+    marquee {
+      background: #e6f0ff;
+      color: #003366;
+      font-weight: bold;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    /* Form */
+    form {
+      background: white;
+      width: 80%;
+      max-width: 850px;
+      margin: 20px auto;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h4 {
+      text-align: center;
+      color: #004080;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 8px;
+    }
+
+    /* Buttons */
+    .search-btn {
+      background: #007bff; /* blue */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: block;
+      margin: 20px auto;
+    }
+    .search-btn:hover {
+      background: #0056b3;
+    }
+
+    .back-btn {
+      background: #dc3545; /* red */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: block;
+      margin: 20px auto;
+    }
+    .back-btn:hover {
+      background: #b02a37;
+    }
+
+    /* Messages */
+    .messages {
+      list-style: none;
+      padding: 10px;
+      margin: 0 0 15px;
+      border-radius: 6px;
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      text-align: left;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    th {
+      background: #004080;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+
+    </style>
+    <div class="header">
+        <img src="/static/logo.png" alt="Logo">
+        <h2> Hire Drive </h2>
+    </div>
+    
+    <script>
+        function hireback() {
+            window.location.href="hireback"
+            
+        }
+    </script>
+    <marquee behavior="stop" direction="left">
+        <p>
+            NOTE :- this project is a experimental project or not a actual  project. &nbsp; &nbsp;
+
+            this project is a experimental project or not a actual  project
+        </p>
+        
+    </marquee>
+    <h4>search requirement for hire a person</h4>
+    <form method="POST">
+        {% csrf_token %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li 
+                {% if message.tags %} class="{{ message.tags }}" {% endif %}
+                >
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <label for="name">name</label>
+        <input type="text" name="name" id="name" required>
+        <label for="location">location</label>
+        <input type="search" name="location" id="location" required><br>
+        <label for="nearbylocation">near by location :</label><br>
+        <input type="search" name="nearbylocation"  required id="nearbylocation"><br>
+        <label for="religion">religion</label>
+        <select name="religion" id="religion" required><br>
+            <option value="select">select</option>
+            <option value="hindu">hindu</option>
+            <option value="muslim">muslim</option>
+            <option value="anyone">anyone</option>
+        </select><br>
+        <label for="transport">transport</label>
+        <select name="transport" id="transport" required>
+            <option value="select">SELECT</option>
+            <option value="bus">BUS</option>
+            <option value="car">CAR</option>
+            <option value="auto">AUTO</option>
+            <option value="truck">TRUCK</option>
+            <option value="bike">BIKE</option>
+        </select><br>
+        <input type="checkbox" name="condition" id="condition" required>
+        <label for="condition"> this website is not blamed of any damage or fines related issues done by the driver. i agree all condition of this website</label><br>
+        <button type="submit" class="search-btn">SEARCH</button>
+        <table border="10">
+            <tbody>
+                <th>name</th>
+                <th>transport</th>
+                <th>religion</th>
+                <th>contact</th>
+                <th>alternate contact number</th>
+                <th>city</th>
+                <th>near by location</th>
+                {% for m in text2 %}
+                <tr>
+                    <td>{{m.name}}</td>
+                    <td>{{m.transport}}</td>
+                    <td>{{m.religion}}</td>
+                    <td>{{m.mobile}}</td>
+                    <td>{{ m.alternate_mobile}}</td>
+                    <td>{{m.city}}</td>
+                    <td>{{m.nearbylocation}}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+            
+            
+        </table>
+
+        
+
+    </form>
+    <button type="submit" class="back-btn" onclick="hireback()">BACK</button>
+    
+    
+</body>
+</html>

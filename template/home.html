@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+</head>
+<body>
+    <style>
+
+    </style>
+    <script>
+         function loginpage() {
+            window.location.href= "{% url 'logout' %}";
+         }
+    </script>
+    <div class="top">
+        <form>
+            <h1>HELLO USERS</h1>
+            <H2>WELCOME TO THIS WEBSITE</H2>
+            <nav>
+                <button  type="button" class="btn"  onclick="loginpage()">logout</button>
+
+            </nav>
+            
+        </form>
+        
+    </div>
+
+    
+    
+</body>
+</html>

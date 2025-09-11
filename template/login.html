@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body>
+    <style>
+        /* Reset default margin/padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Background Styling */
+body {
+    display: flex;
+    justify-content: center;        /* common in all page body*/
+    align-items: center;       /* common in all page body*/
+    min-height: 100vh;
+    background: url('/static/image1.jpg') no-repeat center center fixed;         /* common in all page body*/
+    background-size: cover;     /* common in all page body*/
+}
+
+/* Form Styling */
+form {
+    background: rgba(218, 165, 32, 0.95);   /* goldenrod with transparency */
+    border-radius: 18px;       /* common in all page body*/
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    width: 340px;        /* common in all page body*/
+    padding: 35px;                              /* common in all page body*/
+    text-align: center;                     /* common in all page body*/
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+form:hover {
+    transform: scale(1.02);
+}
+
+/* Heading */
+form h1 {
+    margin-bottom: 20px;
+    font-size: 35px;
+    color: #222;
+}
+
+/* Labels */
+label {
+    display: block;
+    text-align: left;
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    height: 38px;
+    margin-top: 5px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    transition: border 0.2s ease;
+}
+
+input:focus {
+    border: 1px solid #007bff;
+}
+
+/* Button */
+.btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+/* Error Message */
+.alert {
+    background: #ffdddd;
+    color: #d8000c;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* Signup link */
+h5 {
+    font-size: 14px;
+    margin-top: 15px;
+    color: #222;
+}
+
+a {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+    
+    
+
+    
+    </style>
+    <form  method="POST">
+        {%csrf_token%}
+        <h1>LOGIN US</h1>
+        {%if error %}
+        <div class="alert alert-danger " role="alert">
+            <p>user name or password in incorrect</p>
+
+        </div>
+        {% endif %}
+        {%if err %}
+        <div class="alert alert-danger " role="alert">
+            <p>username or password incorrect</p>
+
+        </div>
+        {% endif %}
+        <label for="username">EMAIL Address</label><br>
+        <input type="text" name="username" id="username" required><br>
+        <label for="password">password</label><br>
+        <input type="password" name="password" id="password" required><br>
+        <button class="btn" type="submit">login</button>
+        <h5>I Don't have account</h5>
+        <a href="{% url 'signup' %}">signup</a>
+
+    </form>
+    
+</body>
+</html>

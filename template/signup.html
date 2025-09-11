@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up page</title>
+</head>
+<body>
+    <style>
+        /* Reset default */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Background with your own image */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background: url('/static/signup.jpg') no-repeat center center fixed; /* यहाँ अपनी image लगाएँ */
+    background-size: cover;
+}
+
+/* Signup Form */
+form {
+    background: rgba(206, 111, 240, 0.95);   /* golden effect */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    width: 350px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+form:hover {
+    transform: scale(1.02);
+}
+
+/* Heading */
+form h1 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #222;
+}
+
+/* Labels */
+label {
+    display: block;
+    text-align: left;
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #333;
+    padding: auto;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    height: 38px;
+    margin-top: 5px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    transition: border 0.2s ease;
+}
+
+input:focus {
+    border: 1px solid #007bff;
+}
+
+/* Button */
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Login link */
+a {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+    </style>
+    <form  method = "POST">
+        {% csrf_token %}
+        <h1>SIGN UP</h1>
+        <label for="first">first name</label><br>
+        <input type="text" name="name" id="name" placeholder="first name" required><br>
+        <label for="last">last name</label><br>
+
+        <input type="text" name="last" id="last" placeholder="last name" required><br>
+        <label for="email">EMAIL ID</label><br>
+        <input type="email" name="email" id="email" required><br>
+        
+        <label for="password">password</label><br>
+        <input type="password" name="password" id="password" required><br>
+        <label for="password2">confirm password</label><br>
+        <input type="password" name="password2" id="password2" placeholder="confirm passowrd" required><br>
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            <p>passowrd or confirm passowrd not same</p>
+        </div>
+        {% endif %}
+        <button type="submit">signup</button>
+        <a href="{% url 'login' %}">I have account</a>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!document.body.classList.add
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback - HireDrive</title>
+    
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- AOS for scroll animations -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+        --bg-light: #f5f6fa;
+        --text-light: #2f3640;
+        --card-bg-light: #ffffff;
+        }
+    
+        body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: var(--bg-light) url('/static/image1.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: var(--text-light);
+        transition: 0.3s ease;
+        }
+    
+        h1 {
+        background: rgba(241, 238, 238, 0);
+        color: rgb(250, 248, 248);
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        position: relative;
+        margin: 0;
+        }
+    
+        .container {
+        padding: 30px;
+        text-align: center;
+        color: #edeef0;
+        }
+    
+        .feedback-form {
+        max-width: 600px;
+        margin: auto;
+        background-color: var(--card-bg-light);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    
+        .feedback-form input,
+        .feedback-form textarea {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: none;
+        }
+    
+        .feedback-form button {
+        background-color: #2f3640;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        }
+        .feedback-form button:hover {
+        background-color: #353b48;
+        }
+        .feedback-form h2 {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        color: var(--text-light);
+        }
+        .feedback-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: var(--text-light);
+        }
+        .feedback-form textarea {
+        height: 150px;
+        resize: vertical;
+        }
+        .feedback-form input[type="text"],
+        .feedback-form input[type="email"] {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        }
+        .feedback-form input[type="text"]:focus,
+        .feedback-form input[type="email"]:focus,  
+        .feedback-form textarea:focus {
+        outline: none;
+        border-color: #2f3640;
+        box-shadow: 0 0 5px rgba(47, 54, 64, 0.5);
+        }
+        footer {
+        text-align: center;
+        padding: 20px;
+        background: #2f3640;
+        color: white;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form  method="POST">
+        {% csrf_token %}
+        <h1>Feedback</h1>
+        <div class="container">
+            <div class="feedback-form" data-aos="fade-up">
+                <h2>We value your feedback!</h2>
+                <form action="#" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                    
+                    <button type="submit" name="submit">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+
+    </form>
+        
+    
+    
+
+    
+
+    <footer>
+        &copy; 2023 HireDrive. All rights reserved.
+    </footer>
+
+    <!-- AOS script -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        document.querySelector('.feedback-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = 'practice/'; // Change to your next page's filename
+        });
+    </script>
+        
+
+</head>
+<body>

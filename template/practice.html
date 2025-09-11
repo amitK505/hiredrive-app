@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank you</title>
+</head>
+<body>
+    <h1>Thank you for your feedback!</h1>
+    <div class="container">
+        <p>Your feedback is valuable to us. We will review it and get back to you if necessary.</p>
+        <p>Feel free to explore more about our services or return to the homepage.</p>
+        <button onclick="window.location.href='/'">Go to Homepage</button>
+        <button onclick="window.location.href='/about'">Learn More About Us</button>
+    </div>
+    <style>
+        :root {
+      --bg-light: #f5f6fa;
+      --text-light: #2f3640;
+      --card-bg-light: #ffffff;
+    }
+
+    body {
+        
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-light) url('/static/signup.jpg')no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-light);
+    transition: 0.3s ease;
+    }
+    h1 {
+    color: #e9edf1ff;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 32px;
+
+    }
+    .container {
+    padding: 30px;
+    text-align: center;
+    color: #edeef0;
+    
+    margin-top: 20px;
+    }
+    button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #c2e2f1;
+    color: #235aa8ff;
+    cursor: pointer;
+    }
+    button:hover {
+    background-color: #a3d4e6;
+    }
+    button:focus {
+    outline: none;
+    }
+        
+        
+    </style>
+    <script>
+        // Optional: Add any JavaScript functionality if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Any additional JS can go here
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4
+/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        // Initialize AOS for scroll animations
+        AOS.init({
+            duration: 1200, // Animation duration
+            once: true // Whether animation should happen only once
+        });
+    </script>
+    
+</body>
+</html>

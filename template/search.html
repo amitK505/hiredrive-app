@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      background-image: url("/static/drive.jpg");
+    }
+
+    /* Header with logo */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 15px 25px;
+      background: #004080;
+      color: white;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .header img {
+      height: 50px;
+      margin-right: 15px;
+    }
+
+    .header h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    /* Form styles */
+    form {
+      background: white;
+      width: 80%;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #004080;
+    }
+
+    h4 {
+      text-align: center;
+      font-weight: normal;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      background: #28a745; /* green */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .submit-btn:hover {
+      background: #218838;
+    }
+
+    /* Back Button */
+    .back-btn {
+      background: #dc3545; /* red */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .back-btn:hover {
+      background: #b02a37;
+    }
+    .messages {
+      list-style: none;
+      padding: 10px;
+      margin: 0 0 15px;
+      border-radius: 6px;
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    th {
+      background: #004080;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+        
+    </style>
+    <div class="header">
+        <img src="/static/logo.png" alt="Logo">
+        <h2>Drive Search</h2>
+    </div>
+    <script>
+        function  back() {
+            window.location.href='back'
+            
+        }
+    </script>
+    <form  method="POST">
+        {% csrf_token %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li 
+                {% if message.tags %} class="{{ message.tags }}" {% endif %}
+                >
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <h1>Enter basic information to search for drive....</h1>
+        <h4>FARE and other detail is done by the HIRE person</h4>
+        <label for="name">name</label>
+        <input type="text" name="name" id="name">
+        <label for="location">location</label>
+        <input type="text" name="location" id="location" placeholder="location" required><br>
+        <label for="transport">Vehicle Type</label>
+        <select name="transport" id="transport" required >
+            <option value="bus">Bus</option>
+            <option value="car">Car</option>
+            <option value="truck">Truck</option>
+            <option value="auto">Auto</option>
+            <option value="bike">Bike</option>
+        </select><br>
+        <label for="nearbylocation">Near by location</label>
+        <input type="text" name="nearbylocation" id="nearbylocation" placeholder="enter">
+        <label for="religion">Religion</label>
+        <select name="religion" id="religion" required>
+            <option value="hindu">Hindu</option>
+            <option value="muslim">Muslim</option>
+            <option value="anyone">Anyone</option>
+        </select><br>
+        <button  type="submit"     class="submit-btn" >Submit</button>
+        
+        <table border="5">
+            <tr>
+                <th>name</th>
+                <th>transport</th>
+                <th>religion</th>
+                <th>Contact</th>
+                <th>City</th>
+                <th>Near by location</th>
+            </tr>
+            {% for x in text%}
+            <tr>
+                <td>{{x.name}}</td>
+                <td>{{x.transport}}</td>
+                <td>{{x.religion}}</td>
+                <td>{{x.mobile}}</td>
+                <td>{{x.city}}</td>
+                <td>{{x.nearbylocation}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </form>
+    <button  name="back"  class ="back-btn" onclick="back()">BACK</button>
+    
+</body>
+</html>
